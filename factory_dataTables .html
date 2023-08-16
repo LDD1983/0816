@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+   
+    <!-- dataTables css -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    
+    <style>
+        *{
+            font-family: system-ui;
+        }
+    </style>
+    
+
+</head>
+
+<body>
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>area</th>
+                <th>location</th>
+                <th>name</th>
+                <th>address</th>
+                <th>url</th>                              
+            </tr>
+        </thead>
+        <tbody id="myTbody">
+
+          
+        </tbody>
+    </table>
+
+
+
+   
+
+
+  
+    <!-- jq src js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+    <!-- dataTables js -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <!-- 觀光工廠 opendata -->
+    <script src="./factory.js/factory.js"></script>
+    <!-- jq start -->
+    <script>
+        $(document).ready(function () {
+            // data 在 factory.js
+            console.log('data',data);
+            console.log('data[0]',data[0]);
+            console.log('data[0]["area"]',data[0]["area"]);
+            console.log('data[0]["location"]',data[0]["location"]);
+            console.log('data[0]["name"]',data[0]["name"]);
+            console.log('data[0]["url"]',data[0]["url"]);
+
+
+            let content = '';
+            for (let i = 0; i < data.length; i++) {   
+                 content = content + `
+                    <tr>
+                        <th>${data[i]["ID"]}</th>
+                        <th>${data[i]["area"]}</th>
+                        <th>${data[i]["location"]}</th>
+                        <th>${data[i]["name"]}</th>
+                        <th>${data[i]["address"]}</th>                                                                           
+                        <th>${data[i]["url"]}</th>                                                                           
+                    </tr>
+                    `;
+           
+            };
+
+           
+            // console.log(content);
+            const myTbody = $('#myTbody');
+            const myTable = $('#myTable');
+            myTbody.html(content);
+            $('#myTable').DataTable({
+                language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/zh-HANT.json',
+                },
+            });
+
+           
+
+        });
+    </script>
+    <!-- jq end -->
+</body>
+
+</html>
