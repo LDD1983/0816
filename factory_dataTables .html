@@ -50,7 +50,7 @@
     <!-- dataTables js -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <!-- 觀光工廠 opendata -->
-    <script src="./factory.js/factory.js"></script>
+    <script src="./js/factory.js"></script>
     <!-- jq start -->
     <script>
         $(document).ready(function () {
@@ -82,7 +82,10 @@
             // console.log(content);
             const myTbody = $('#myTbody');
             const myTable = $('#myTable');
+
+            //  content into html ///////
             myTbody.html(content);
+            //  datatable ///////////
             $('#myTable').DataTable({
                 language: {
                 url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/zh-HANT.json',
