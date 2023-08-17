@@ -74,13 +74,17 @@
                     type: "get",
                     url: url,
                     // data: "data",
+                    // 來源資料為json格式
                     dataType: "json",
                     success: function (res) {
-                        console.log('res',res);
+                        // console.log('res',res);
+                        // data宣告為 ajax 抓取之結果
                         let data = res ;
-    
+                        // 迴圈外先宣告content 成為全域變數
                         let content = '';
-                        for (let i = 0; i < data.length; i++) {   
+                        for (let i = 0; i < data.length; i++) {
+                            // 資料 塞入////////////
+
                             content = 
                             content + `
                                 <tr>
@@ -92,8 +96,10 @@
                                 </tr>
                              `;                              
                         };
+                        // tbody內容//////
                         myTbody.html(content);
 
+                        // datatable 中文化//////////
                         $('#myTable').DataTable({
                             language: {
                             url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/zh-HANT.json',
